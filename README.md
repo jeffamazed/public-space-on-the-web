@@ -41,7 +41,7 @@ By default, the server listens on port **8000**.
 
 ### 3. Visit in Your Browser
 
-Open [http://localhost:8000/index.html](http://localhost:8000/index.html)  
+Open [http://localhost:8000/](http://localhost:8000/)  
 You'll see a file selector and a text editor for direct, in-browser file editing.
 
 ---
