@@ -75,15 +75,14 @@ Anyone who can access the server can read, modify, or delete all files.
 
 ## 📖 API Overview
 
-| Method | Path         | Description                |
-| ------ | ------------ | -------------------------- |
-| GET    | `/file`      | Fetch a file or directory  |
-| PUT    | `/file`      | Save/overwrite a file      |
-| DELETE | `/file`      | Delete a file or directory |
-| MKCOL  | `/directory` | Create a new directory     |
+| Method | Path    | Description               |
+| ------ | ------- | ------------------------- |
+| GET    | `/file` | Fetch a file or directory |
+| PUT    | `/file` | Save/overwrite a file     |
 
 - All paths are relative to the project root.
 - File uploads and edits are raw text.
+- The web interface currently only supports GET and PUT.
 
 ---
 
