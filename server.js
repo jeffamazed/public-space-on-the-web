@@ -17,7 +17,17 @@ methods.GET = async function (request) {
   }
 
   if (stats.isDirectory()) {
-    return { body: (await readdir(path)).join("\n") };
+    // Try to serve index.html inside the directory
+    const indexPath = resolve(path, "index.html");
+    try {
+      const indexStats = await stat(indexPath);
+      if (indexStats.isFile()) {
+        return { body: createReadStream(indexPath), type: lookup(indexPath) };
+      }
+    } catch {
+      // No index.html, maybe return directory listing or 403 Forbidden
+      return { status: 403, body: "Forbidden" };
+    }
   } else {
     return { body: createReadStream(path), type: lookup(path) };
   }
@@ -75,14 +85,16 @@ async function notAllowed(request) {
   };
 }
 
-const baseDirectory = process.cwd();
+const baseDirectory = resolve(process.cwd(), "public");
 
 function urlPath(url) {
   let { pathname } = new URL(url, "http://d");
-  let path = resolve(decodeURIComponent(pathname).slice(1));
-  if (path != baseDirectory && !path.startsWith(baseDirectory + sep)) {
+  let path = resolve(baseDirectory, decodeURIComponent(pathname).slice(1));
+
+  if (path !== baseDirectory && !path.startsWith(baseDirectory + sep)) {
     throw { status: 403, body: "Forbidden" };
   }
+
   return path;
 }
 

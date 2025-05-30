@@ -31,10 +31,10 @@ npm install  # Install dependencies (mime-types)
 
 ### 2. Start the Server
 
-From the `public` folder, run:
+From the root of your project folder, run:
 
 ```sh
-node ../server.js
+node server.js
 ```
 
 By default, the server listens on port **8000**.
