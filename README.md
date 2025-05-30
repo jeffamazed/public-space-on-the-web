@@ -24,8 +24,8 @@
 ### 1. Clone and Install
 
 ```sh
-git clone https://github.com/yourusername/public-space-on-the-web.git
-cd public-space-on-the-web/public
+git clone https://github.com/jeffamazed/public-space-on-the-web.git
+cd public-space-on-the-web
 npm install  # Install dependencies (mime-types)
 ```
 
